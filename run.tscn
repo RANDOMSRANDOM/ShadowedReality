@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://bn1ivokirokeo"]
+
+[ext_resource type="AudioStream" uid="uid://dtqpe01ediogf" path="res://emotional-dramatic-introduction-for-documentaries-full-version-158418.mp3" id="1_yiiki"]
+[ext_resource type="PackedScene" uid="uid://druawfidlhgi0" path="res://map2.tscn" id="2_7lpng"]
+[ext_resource type="PackedScene" uid="uid://dmphwbs37p6a8" path="res://player.tscn" id="3_fjyn8"]
+[ext_resource type="FontFile" uid="uid://dh65vbhc8veoh" path="res://Dark_Deception_Unofficial-Regular.ttf" id="4_vot1j"]
+[ext_resource type="PackedScene" uid="uid://bmxynvg8v5gwo" path="res://shadow.tscn" id="5_nup6j"]
+
+[sub_resource type="Gradient" id="Gradient_dkvtx"]
+offsets = PackedFloat32Array(0, 0.713043)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jcjjg"]
+gradient = SubResource("Gradient_dkvtx")
+fill = 1
+fill_from = Vector2(0.477528, 0.438202)
+
+[node name="powerout" type="Node2D"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.160784, 0.0745098, 0.129412, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_yiiki")
+volume_db = 4.635
+pitch_scale = 0.71
+autoplay = true
+mix_target = 1
+max_polyphony = 3
+
+[node name="background" parent="." instance=ExtResource("2_7lpng")]
+position = Vector2(549, 252)
+
+[node name="CharacterBody2D" parent="background" instance=ExtResource("3_fjyn8")]
+position = Vector2(-3.66525, -7.72426)
+scale = Vector2(0.0539008, 0.0404411)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="background/CharacterBody2D"]
+offset_left = -71.0
+offset_top = -233.0
+offset_right = 88.0
+offset_bottom = -104.0
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_vot1j")
+theme_override_font_sizes/normal_font_size = 50
+text = "RUN!"
+
+[node name="PointLight2D" type="PointLight2D" parent="background/CharacterBody2D"]
+position = Vector2(-6.10352e-05, 9.15528e-05)
+color = Color(0.443137, 0, 0, 1)
+energy = 1.64
+texture = SubResource("GradientTexture2D_jcjjg")
+texture_scale = 6.49
+
+[node name="enemy" parent="." instance=ExtResource("5_nup6j")]
+position = Vector2(0, -3.8147e-06)

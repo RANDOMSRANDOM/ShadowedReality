@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://wm5snjabngh1"]
+
+[ext_resource type="AudioStream" uid="uid://cmysy4bld5fd6" path="res://blackout.mp3" id="1_hfq3v"]
+[ext_resource type="PackedScene" uid="uid://dmphwbs37p6a8" path="res://player.tscn" id="2_agiwv"]
+[ext_resource type="PackedScene" uid="uid://druawfidlhgi0" path="res://map2.tscn" id="3_e65in"]
+[ext_resource type="FontFile" uid="uid://d2duoty87n2ro" path="res://HAMMK___.TTF" id="4_fiqkr"]
+[ext_resource type="Script" path="res://runforlife.gd" id="5_c12ba"]
+
+[sub_resource type="Gradient" id="Gradient_dkvtx"]
+offsets = PackedFloat32Array(0.0608696, 0.713043)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jcjjg"]
+gradient = SubResource("Gradient_dkvtx")
+fill = 1
+fill_from = Vector2(0.477528, 0.438202)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_scqre"]
+size = Vector2(3.44965, 2.37133)
+
+[node name="powerout" type="Node2D"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.137255, 0.137255, 0.137255, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_hfq3v")
+volume_db = 4.635
+pitch_scale = 0.71
+autoplay = true
+mix_target = 1
+max_polyphony = 3
+
+[node name="background" parent="." instance=ExtResource("3_e65in")]
+position = Vector2(498, 210)
+
+[node name="CharacterBody2D" parent="background" instance=ExtResource("2_agiwv")]
+position = Vector2(-21.0752, -4.125)
+scale = Vector2(0.0539008, 0.0404411)
+
+[node name="PointLight2D" type="PointLight2D" parent="background/CharacterBody2D"]
+texture = SubResource("GradientTexture2D_jcjjg")
+texture_scale = 4.29
+
+[node name="RichTextLabel" type="RichTextLabel" parent="background/CharacterBody2D"]
+offset_left = -502.0
+offset_top = 282.0
+offset_right = 501.0
+offset_bottom = 343.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
+theme_override_colors/selection_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/table_odd_row_bg = Color(1, 1, 1, 1)
+theme_override_colors/table_even_row_bg = Color(1, 1, 1, 1)
+theme_override_colors/table_border = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("4_fiqkr")
+theme_override_font_sizes/normal_font_size = 75
+text = "Go find out what's happened inside the main room."
+
+[node name="Camera2D2" type="Camera2D" parent="background/CharacterBody2D"]
+
+[node name="Area2D" type="Area2D" parent="background"]
+script = ExtResource("5_c12ba")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="background/Area2D"]
+position = Vector2(-3.66525, -9.09925)
+shape = SubResource("RectangleShape2D_scqre")
+
+[connection signal="body_entered" from="background/Area2D" to="background/Area2D" method="_on_body_entered"]

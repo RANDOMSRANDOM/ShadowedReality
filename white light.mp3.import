@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://chtcsqlmu4s4f"
+path="res://.godot/imported/white light.mp3-d4b1554163bdad7348669674bd073f9e.mp3str"
+
+[deps]
+
+source_file="res://white light.mp3"
+dest_files=["res://.godot/imported/white light.mp3-d4b1554163bdad7348669674bd073f9e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
