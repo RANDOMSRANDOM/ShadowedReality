@@ -1,0 +1,111 @@
+[gd_scene load_steps=13 format=3 uid="uid://b0novym5cj257"]
+
+[ext_resource type="PackedScene" uid="uid://bmxynvg8v5gwo" path="res://shadow.tscn" id="1_oh3bu"]
+[ext_resource type="AudioStream" uid="uid://bwql8jm8jtk8u" path="res://red light.mp3" id="1_x6nv3"]
+[ext_resource type="PackedScene" uid="uid://druawfidlhgi0" path="res://map2.tscn" id="2_2f18v"]
+[ext_resource type="PackedScene" uid="uid://dmphwbs37p6a8" path="res://player.tscn" id="3_73xyt"]
+[ext_resource type="FontFile" uid="uid://d2duoty87n2ro" path="res://HAMMK___.TTF" id="4_o1vxx"]
+[ext_resource type="Script" path="res://hedge.gd" id="5_570ky"]
+[ext_resource type="Script" path="res://hospital.gd" id="6_1h5jp"]
+[ext_resource type="AudioStream" uid="uid://s04h41cgbo65" path="res://knife-thrust-into-wall-7017.mp3" id="6_8pcfy"]
+
+[sub_resource type="Gradient" id="Gradient_dkvtx"]
+offsets = PackedFloat32Array(0.0608696, 0.713043)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jcjjg"]
+gradient = SubResource("Gradient_dkvtx")
+fill = 1
+fill_from = Vector2(0.477528, 0.438202)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmajx"]
+size = Vector2(2.81803, 2.6705)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cre1g"]
+size = Vector2(2.9986, 2.35111)
+
+[node name="powerout" type="Node2D"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.0862745, 0.0235294, 0.0235294, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_x6nv3")
+volume_db = 4.635
+pitch_scale = 1.18
+autoplay = true
+mix_target = 1
+max_polyphony = 3
+
+[node name="background" parent="." instance=ExtResource("2_2f18v")]
+position = Vector2(498, 214)
+
+[node name="CharacterBody2D" parent="background" instance=ExtResource("3_73xyt")]
+position = Vector2(-3.82703, -9.09924)
+scale = Vector2(0.0539008, 0.0404411)
+
+[node name="PointLight2D" type="PointLight2D" parent="background/CharacterBody2D"]
+position = Vector2(0.00140381, 0.000232697)
+color = Color(0.760784, 0, 0.0392157, 1)
+texture = SubResource("GradientTexture2D_jcjjg")
+texture_scale = 7.15
+
+[node name="RichTextLabel" type="RichTextLabel" parent="background/CharacterBody2D"]
+offset_left = -175.0
+offset_top = -164.0
+offset_right = 453.0
+offset_bottom = -124.0
+theme_override_colors/default_color = Color(1, 0.576471, 0.517647, 1)
+theme_override_fonts/normal_font = ExtResource("4_o1vxx")
+theme_override_font_sizes/normal_font_size = 100
+text = "FIND THE EXIT"
+scroll_active = false
+
+[node name="Area2D" type="Area2D" parent="background"]
+position = Vector2(-1.94043, 0)
+script = ExtResource("5_570ky")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="background/Area2D"]
+position = Vector2(48.9958, -24.7095)
+shape = SubResource("RectangleShape2D_nmajx")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="background/Area2D"]
+position = Vector2(-26.8426, -8.49264)
+scale = Vector2(0.0539008, 0.0404411)
+stream = ExtResource("6_8pcfy")
+
+[node name="Area2D2" type="Area2D" parent="background"]
+script = ExtResource("6_1h5jp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="background/Area2D2"]
+position = Vector2(96.3746, 5.86396)
+shape = SubResource("RectangleShape2D_cre1g")
+
+[node name="enemy" parent="." instance=ExtResource("1_oh3bu")]
+position = Vector2(-50, -306)
+
+[node name="Timer" type="Timer" parent="enemy"]
+one_shot = true
+autostart = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+offset_left = 1676.0
+offset_top = -430.0
+offset_right = 1757.0
+offset_bottom = -397.0
+theme_override_colors/default_color = Color(1, 0.576471, 0.517647, 1)
+theme_override_fonts/normal_font = ExtResource("4_o1vxx")
+theme_override_font_sizes/normal_font_size = 75
+text = "EXIT"
+scroll_active = false
+
+[node name="PointLight2D2" type="PointLight2D" parent="RichTextLabel2"]
+position = Vector2(28, 0)
+scale = Vector2(1, 0.999999)
+color = Color(0.760784, 0, 0.0392157, 1)
+texture = SubResource("GradientTexture2D_jcjjg")
+texture_scale = 7.15
+
+[connection signal="body_entered" from="background/Area2D" to="background/Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="background/Area2D2" to="background/Area2D2" method="_on_body_entered"]
+[connection signal="timeout" from="enemy/Timer" to="enemy" method="_on_timer_timeout"]

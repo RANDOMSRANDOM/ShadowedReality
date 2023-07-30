@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://cd8n6xsnc1epf"]
+
+[ext_resource type="PackedScene" uid="uid://df7j2h4wq1jij" path="res://map1.tscn" id="1_mqf5f"]
+[ext_resource type="FontFile" uid="uid://d2duoty87n2ro" path="res://HAMMK___.TTF" id="3_6gw4v"]
+[ext_resource type="PackedScene" uid="uid://donpaxtaxhn00" path="res://electric_latch.tscn" id="3_f6dhi"]
+[ext_resource type="AudioStream" uid="uid://chtcsqlmu4s4f" path="res://white light.mp3" id="5_h1ae7"]
+[ext_resource type="PackedScene" uid="uid://dmphwbs37p6a8" path="res://player.tscn" id="6_8m5ut"]
+
+[sub_resource type="Gradient" id="Gradient_314qu"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tlmam"]
+gradient = SubResource("Gradient_314qu")
+fill_to = Vector2(0.0458716, 0)
+
+[sub_resource type="Gradient" id="Gradient_vy0or"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8a74f"]
+gradient = SubResource("Gradient_vy0or")
+fill = 1
+fill_from = Vector2(0.38764, 0.466292)
+fill_to = Vector2(0.691011, 0.702247)
+
+[node name="electrical room" type="Node2D"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+position = Vector2(-29.5915, -10.3529)
+scale = Vector2(0.0539008, 0.0404411)
+color = Color(0.243137, 0.243137, 0.243137, 1)
+
+[node name="background" parent="." instance=ExtResource("1_mqf5f")]
+position = Vector2(528, 240)
+
+[node name="CharacterBody2D" parent="background" instance=ExtResource("6_8m5ut")]
+position = Vector2(1.45532, 11.3235)
+scale = Vector2(0.0539008, 0.0404411)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="background/CharacterBody2D"]
+offset_left = -384.0
+offset_top = 168.001
+offset_right = 432.0
+offset_bottom = 200.001
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("3_6gw4v")
+theme_override_font_sizes/normal_font_size = 75
+text = "Your job is to fix the latch, go fix it!"
+scroll_active = false
+
+[node name="PointLight2D" type="PointLight2D" parent="background"]
+position = Vector2(-27.8398, -6.47058)
+scale = Vector2(0.0530586, 0.0391773)
+texture = SubResource("GradientTexture2D_tlmam")
+
+[node name="ElectricLatch2" parent="background" instance=ExtResource("3_f6dhi")]
+position = Vector2(-27.5972, -6.47058)
+scale = Vector2(-0.0546883, 0.0403569)
+frame_progress = 0.38855
+
+[node name="Light" type="PointLight2D" parent="."]
+position = Vector2(568, 304)
+scale = Vector2(11.3462, 9.92789)
+color = Color(0.870588, 0.909804, 0.843137, 1)
+energy = 1.15
+shadow_enabled = true
+shadow_filter = 2
+texture = SubResource("GradientTexture2D_8a74f")
+texture_scale = 1.3
+height = 9.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_h1ae7")
+autoplay = true

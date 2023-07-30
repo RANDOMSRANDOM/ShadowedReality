@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://ct6f1k5b5l8h6"]
+
+[ext_resource type="Texture2D" uid="uid://wnfes8bdir0g" path="res://pixil-frame-0.png" id="1_55gpc"]
+
+[sub_resource type="Gradient" id="Gradient_gnf5p"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_faaqi"]
+gradient = SubResource("Gradient_gnf5p")
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.792135, 0.0955056)
+
+[node name="lights" type="Sprite2D"]
+position = Vector2(288, -32)
+scale = Vector2(1, 1)
+texture = ExtResource("1_55gpc")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 160)
+scale = Vector2(6, 6.04375)
+energy = 0.82
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+texture = SubResource("GradientTexture2D_faaqi")

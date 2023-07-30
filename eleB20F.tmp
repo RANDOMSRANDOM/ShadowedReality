@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://cd8n6xsnc1epf"]
+
+[ext_resource type="PackedScene" uid="uid://df7j2h4wq1jij" path="res://map1.tscn" id="1_mqf5f"]
+[ext_resource type="AudioStream" uid="uid://cf1j27qf0jgg" path="res://dripping-water-in-cave-114694.mp3" id="3_ak6w4"]
+[ext_resource type="PackedScene" uid="uid://dmphwbs37p6a8" path="res://player.tscn" id="6_8m5ut"]
+
+[sub_resource type="Gradient" id="Gradient_vy0or"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8a74f"]
+gradient = SubResource("Gradient_vy0or")
+fill = 1
+fill_from = Vector2(0.38764, 0.466292)
+fill_to = Vector2(0.691011, 0.702247)
+
+[node name="electrical room" type="Node2D"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+position = Vector2(-29.5915, -10.3529)
+scale = Vector2(0.0539008, 0.0404411)
+color = Color(0.243137, 0.243137, 0.243137, 1)
+
+[node name="background" parent="." instance=ExtResource("1_mqf5f")]
+
+[node name="CharacterBody2D" parent="background" instance=ExtResource("6_8m5ut")]
+position = Vector2(1.45532, 11.3235)
+scale = Vector2(0.0539008, 0.0404411)
+
+[node name="Light" type="PointLight2D" parent="."]
+position = Vector2(487, 258)
+scale = Vector2(11.3462, 9.92789)
+color = Color(0.870588, 0.909804, 0.843137, 1)
+energy = 1.15
+shadow_enabled = true
+shadow_filter = 2
+texture = SubResource("GradientTexture2D_8a74f")
+texture_scale = 1.3
+height = 9.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ak6w4")
+autoplay = true

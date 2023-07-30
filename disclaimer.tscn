@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7a1fiejiqupw"]
+
+[ext_resource type="Script" path="res://disclaimer.gd" id="1_4a3x0"]
+[ext_resource type="Texture2D" uid="uid://camxxqpigab4y" path="res://blackbg.jpg" id="1_ig6pw"]
+
+[node name="disclaimer" type="Node2D"]
+script = ExtResource("1_4a3x0")
+
+[node name="Blackbg" type="Sprite2D" parent="."]
+position = Vector2(1076, 662)
+scale = Vector2(7.09211, 6.68687)
+texture = ExtResource("1_ig6pw")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.383
+one_shot = true
+autostart = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 3.0
+offset_top = -9.0
+offset_right = 2047.0
+offset_bottom = 1313.0
+theme_override_font_sizes/normal_font_size = 125
+text = "Disclaimer: This game is just a demo of the future game as it is still in development.
+
+Enjoy!"
+scroll_active = false
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

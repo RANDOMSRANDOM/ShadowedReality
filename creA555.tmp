@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://by64h486ni8s0"]
+
+[node name="credits" type="Node2D"]
+
+[node name="TextEdit" type="TextEdit" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -8.0
+offset_right = 2048.0
+offset_bottom = 1040.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 29
+text = "                                  																							Credits
+                                                                                                              Team - - - - - - - - - THE GUYS TeAM
+																							Main Developer  - - - - - - - - Alfred Lee
+																									  Developer  - - - - - - - - Brendon Foong
+                                                                                                      Developer  - - - - - - - - Arwin Tharman
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+																								            	     Artists : Arwin Tharman
+                                                                                                                                   Alfred Lee
+
+
+                                                                                                                    Coders : Brendon Foong
+                                                                                                                                    Alfred Lee
+
+
+                                                                                                              SFX Maker : Brendon Foong
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+                                                                                                                                   
+                                                                                                                     THANKS FOR PLAYING!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+LOL WHY ARE YOU STILL HERE
+                                                                                                          "
+scroll_smooth = true
+
+[node name="screen" type="Sprite2D" parent="."]
+position = Vector2(578.127, 328)
+scale = Vector2(5.59876, 3.2298)
